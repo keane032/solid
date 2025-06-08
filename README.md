@@ -43,7 +43,7 @@ class EmailService {
 }
  ```
 
-# Princípio Aberto/Fechado (OCP) - SOLID
+# Princípio Aberto/Fechado (OCP)
 
 O **Princípio Aberto/Fechado** (Open/Closed Principle - OCP) afirma que **uma classe deve ser aberta para extensão, mas fechada para modificação**.
 
@@ -91,7 +91,7 @@ class Circle implements Shape {
 }
  ```
 
-# Princípio de Substituição de Liskov (LSP) - SOLID
+# Princípio de Substituição de Liskov (LSP)
 
 O **Princípio de Substituição de Liskov** (Liskov Substitution Principle - LSP) afirma que **objetos de uma superclasse devem poder ser substituídos por objetos de uma subclasse sem afetar a correção do programa**.
 
@@ -149,7 +149,7 @@ class Square implements Shape {
 }
  ```
 
-# Princípio da Segregação de Interface (ISP) - SOLID
+# Princípio da Segregação de Interface (ISP)
 
 O **Princípio da Segregação de Interface** (Interface Segregation Principle - ISP) afirma que **uma classe não deve ser forçada a implementar interfaces que ela não usa**.
 
@@ -270,10 +270,10 @@ class FirebaseUserRepository implements UserRepositoryAbstract {
   }
 }
 
-class UserServiceRight {
+class UserService {
   UserRepositoryAbstract userRepositoryAbstract;
 
-  UserServiceRight(this.userRepositoryAbstract);
+  UserService(this.userRepositoryAbstract);
 
   void saveUser(User user) {
     userRepositoryAbstract.save(user);
