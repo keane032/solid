@@ -150,3 +150,78 @@ class Square implements Shape {
   }
 }
  ```
+
+# Princípio da Segregação de Interface (ISP) - SOLID
+
+O **Princípio da Segregação de Interface** (Interface Segregation Principle - ISP) afirma que **uma classe não deve ser forçada a implementar interfaces que ela não usa**.
+
+Ou seja, **interfaces devem ser específicas e enxutas**, permitindo que as classes dependam apenas dos métodos que realmente utilizam.
+
+---
+
+## ❌ Exemplo que viola o ISP
+
+```dart
+abstract class Shape {
+  double area();
+  double perimeter();
+}
+
+class Rectangle implements Shape {
+  late double width;
+  late double height;
+
+  double area() {
+    return width * height;
+  }
+
+  double perimeter() {
+    return 2 * (width + height);
+  }
+}
+
+class Circle implements Shape {
+  late double radius;
+
+  double area() {
+    return pi * pow(radius, 2);
+  }
+
+  double perimeter() {
+    return 2 * pi * radius;
+  }
+}
+```
+
+## ✅ Exemplo respeita o ISP
+
+```dart
+abstract class Area {
+  double area();
+}
+
+abstract class Perimeter {
+  double perimeter();
+}
+
+class Rectangle implements Area, Perimeter {
+  late double width;
+  late double height;
+
+  double area() {
+    return width * height;
+  }
+
+  double perimeter() {
+    return 2 * (width + height);
+  }
+}
+
+class Circle implements Area {
+  late double radius;
+
+  double area() {
+    return pi * pow(radius, 2);
+  }
+}
+ ```
