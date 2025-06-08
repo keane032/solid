@@ -25,7 +25,8 @@ class User {
 
   void save() {}
   void sendEmail() {}
-} ```
+}
+```
 
 ## ✅ Exemplo respeita o SRP
 
@@ -41,5 +42,6 @@ class UserRepository {
 
 class EmailService {
   void sendEmail(UserRight user) {}
-} ```
+}
+ ```
 
