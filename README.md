@@ -133,7 +133,7 @@ abstract class Shape {
   double area();
 }
 
-class RectangleRight implements Shape {
+class Rectangle implements Shape {
   late double width;
   late double height;
 
@@ -142,7 +142,7 @@ class RectangleRight implements Shape {
   }
 }
 
-class SquareRight implements Shape {
+class Square implements Shape {
   late double side;
 
   double area() {
