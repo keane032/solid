@@ -225,3 +225,60 @@ class Circle implements Area {
   }
 }
  ```
+
+
+# Princípio da Inversão de Dependência (DIP)
+
+O **Princípio da Inversão de Dependência** (Dependency Inversion Principle - DIP) afirma que:
+
+> **Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.**
+
+Ou seja, **você deve depender de interfaces (abstrações), e não de implementações concretas**, promovendo um sistema mais flexível e desacoplado.
+
+---
+
+## ❌ Exemplo que **não respeita** o DIP
+
+```dart
+class User {}
+
+class UserRepository {
+  void save(User user) {}
+}
+
+class UserService {
+  UserRepository userRepository;
+
+  UserService(this.userRepository);
+
+  void saveUser(User user) {
+    userRepository.save(user);
+  }
+}
+```
+
+## ✅ Exemplo respeita o DIP
+
+```dart
+class User {}
+
+abstract class UserRepositoryAbstract {
+  void save(User user);
+}
+
+class FirebaseUserRepository implements UserRepositoryAbstract {
+  void save(User user) {
+    // salvar no Firebase
+  }
+}
+
+class UserServiceRight {
+  UserRepositoryAbstract userRepositoryAbstract;
+
+  UserServiceRight(this.userRepositoryAbstract);
+
+  void saveUser(User user) {
+    userRepositoryAbstract.save(user);
+  }
+}
+ ```
