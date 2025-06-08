@@ -92,3 +92,61 @@ class Circle implements Shape {
   }
 }
  ```
+
+# Princípio de Substituição de Liskov (LSP) - SOLID
+
+O **Princípio de Substituição de Liskov** (Liskov Substitution Principle - LSP) afirma que **objetos de uma superclasse devem poder ser substituídos por objetos de uma subclasse sem afetar a correção do programa**.
+
+Ou seja, uma subclasse deve **preservar o comportamento esperado** da superclasse, sem introduzir efeitos colaterais ou alterações indesejadas.
+
+---
+
+## ❌ Exemplo que viola o LSP
+
+```dart
+class Rectangle {
+  late double width;
+  late double height;
+
+  double area() {
+    return width * height;
+  }
+}
+
+class Square extends Rectangle {
+  late double side;
+
+  @override
+  void set width(double value) => side = value;
+
+  @override
+  void set height(double value) => side = value;
+}
+```
+
+## ✅ Exemplo respeita o LSP
+
+```dart
+import 'dart:math';
+
+abstract class Shape {
+  double area();
+}
+
+class RectangleRight implements Shape {
+  late double width;
+  late double height;
+
+  double area() {
+    return width * height;
+  }
+}
+
+class SquareRight implements Shape {
+  late double side;
+
+  double area() {
+    return 1.0 * pow(side, 2);
+  }
+}
+ ```
