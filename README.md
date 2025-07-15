@@ -68,7 +68,7 @@ class Rectangle {
 }
 ```
 
-## ✅ Exemplo respeita o SRP
+## ✅ Exemplo respeita o OCP
 
 ```dart
 import 'dart:math';
